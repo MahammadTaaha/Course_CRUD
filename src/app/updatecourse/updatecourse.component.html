@@ -134,10 +134,10 @@
         
         <div class="form-group">
             <label class="control-label">Is Course Active? :</label>
-            <input type="checkbox" name="difficultyType" formControlName="isActive" class="m-1" />
-            <div *ngIf="cForm.controls['isActive'].errors && (form.submitted || cForm.controls['isActive'].dirty)"
+            <input type="checkbox" name="isActive" formControlName="isActive" class="m-1" />
+            <div *ngIf="cForm.controls['isActive'].errors && (form.submitted || cForm.controls['isActive'].touched)"
                 class="text-danger">
-                <span [hidden]="!cForm.controls['isActive'].errors['required']">Please Select here</span>
+                <span [hidden]="!cForm.controls['isActive'].errors['required']">Please Select Activation</span>
             </div>
         </div>
 

@@ -82,7 +82,7 @@ export class UpdatecourseComponent implements OnInit {
         console.log(this.cForm.value);
         this.courseService.UpdateCourse(this.cForm.value).subscribe((res) => {
           if (res.status == 200) {
-            this.toastr.success("Course Updated successfully!");
+            this.toastr.success("Course Updated Successfully!");
             this.router.navigateByUrl('/');
           }
         })

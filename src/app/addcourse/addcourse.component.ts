@@ -16,11 +16,11 @@ import { MentorService } from '../services/mentor.service';
 })
 export class AddcourseComponent implements OnInit {
 
-  category:Category[]|any;
-  mentor:Mentor[]|any;
+  category: Category[] | any;
+  mentor: Mentor[] | any;
   cForm: FormGroup;
-  constructor(private fb: FormBuilder, private courseService: CourseService,private categoryService:CategoryService,private mentorService:MentorService,
-     private router: Router,private route: ActivatedRoute,private toastr:ToastrService) {
+  constructor(private fb: FormBuilder, private courseService: CourseService, private categoryService: CategoryService, private mentorService: MentorService,
+    private router: Router, private route: ActivatedRoute, private toastr: ToastrService) {
     this.cForm = this.fb.group({
       id: [0],
       name: [null, Validators.required],
@@ -29,35 +29,37 @@ export class AddcourseComponent implements OnInit {
       difficultyType: ['', Validators.required],
       unitPrice: [null, Validators.required],
       categoryId: ['', Validators.required],
-      mentorId:['',Validators.required],
+      mentorId: ['', Validators.required],
       url: [null, Validators.required],
-      imageurl: ['',Validators.required],
-      demourl:['',Validators.required],
+      imageurl: ['', Validators.required],
+      demourl: ['', Validators.required],
       isActive: [false, Validators.requiredTrue],
-      sequence:[null,Validators.required]
+      sequence: [null, Validators.required]
     });
   }
 
   ngOnInit(): void {
-    this.categoryService.GetCategories().subscribe(res=>{
+    this.categoryService.GetCategories().subscribe(res => {
       this.category = res.body;
     })
 
-    this.mentorService.GetMentors().subscribe(res=>{
+    this.mentorService.GetMentors().subscribe(res => {
       this.mentor = res.body;
     })
   }
 
-  SaveCourse(){
-    this.courseService.AddCourse(this.cForm.value).subscribe(res => {
-      if (res.status == 201) {
-        this.toastr.success("Course Saved Successfully!");
-        this.router.navigate(['/']);
-      }
-    });
+  SaveCourse() {
+    if (this.cForm.valid) {
+      this.courseService.AddCourse(this.cForm.value).subscribe(res => {
+        if (res.status == 201) {
+          this.toastr.success("Course Saved Successfully!");
+          this.router.navigate(['/']);
+        }
+      });
+    }
   }
 
-  SaveData(){
+  SaveData() {
     console.log(this.cForm.value);
   }
 }
