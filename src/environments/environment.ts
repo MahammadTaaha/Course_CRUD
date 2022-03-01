@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiAddress: 'http://edtechsparkapi.azurewebsites.net/api/'
-  apiAddress: 'https://localhost:7272/api/'
+  apiAddress: 'http://edtechsparkapi.azurewebsites.net/api/'
+  //apiAddress: 'https://localhost:7272/api/'
 };
 
 /*
