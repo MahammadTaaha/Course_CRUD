@@ -1,0 +1,151 @@
+<br>
+<div class="jumbotron bg-light text-center">
+    <h5 class="display-6">UPDATE</h5>
+</div>
+
+<div class="col-sm-6 offset-sm-3 border border-dark rounded">
+
+    <form #form="ngForm" [formGroup]="cForm" class="p-3" (ngSubmit)="UpdateCourse()">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Category:</label>
+                    <select class="form-control" name="categoryId" formControlName="categoryId">
+                        <option [value]="''">-Select-</option>
+                        <option *ngFor="let item of category" [value]="item.id">{{item.id}}-{{item.name}}</option>
+                    </select>
+                    <div *ngIf="cForm.controls['categoryId'].errors && (form.submitted || cForm.controls['categoryId'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['categoryId'].errors['required']">Please Select Category</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Difficulty Type:</label>
+                    <select class="form-control" name="difficultyType" formControlName="difficultyType">
+                        <option [value]="''">-Select-</option>
+                        <option value="1">1-Beginners</option>
+                        <option value="2">2-Intermediate</option>
+                        <option value="3">3-Advanced</option>
+                    </select>
+                    <div *ngIf="cForm.controls['difficultyType'].errors && (form.submitted || cForm.controls['difficultyType'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['difficultyType'].errors['required']">Please Select Difficulty
+                            Type</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Mentor:</label>
+            <select class="form-control" name="mentorId" formControlName="mentorId">
+                <option [value]="''">-Select-</option>
+                <option *ngFor="let item of mentor" [value]="item.id">{{item.id}}-{{item.name}}</option>
+            </select>
+            <div *ngIf="cForm.controls['mentorId'].errors && (form.submitted || cForm.controls['mentorId'].touched)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['mentorId'].errors['required']">Please Select Mentor</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Course Name:</label>
+            <input type="text" class="form-control" name="name" formControlName="name" />
+            <div *ngIf="cForm.controls['name'].errors && (form.submitted || cForm.controls['name'].touched)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['name'].errors['required']">Please Enter Name</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Course Summary:</label>
+            <input type="text" class="form-control" name="summary" formControlName="summary">
+            <div *ngIf="cForm.controls['summary'].errors && (form.submitted || cForm.controls['summary'].touched)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['summary'].errors['required']">Please Enter Summary</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Course Description:</label>
+            <input type="text" class="form-control" name="description" formControlName="description">
+            <div *ngIf="cForm.controls['description'].errors && (form.submitted || cForm.controls['description'].touched)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['description'].errors['required']">Please Enter Description</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Demo Url:</label>
+            <input type="text" class="form-control" name="demourl" formControlName="demourl" />
+            <div *ngIf="cForm.controls['demourl'].errors && (form.submitted || cForm.controls['demourl'].touched)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['demourl'].errors['required']">Please Enter demo Url</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Url:</label>
+                    <input type="url" class="form-control" name="url" formControlName="url" />
+                    <div *ngIf="cForm.controls['url'].errors && (form.submitted || cForm.controls['url'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['url'].errors['required']">Please Enter Url</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Image Url:</label>
+                    <input type="text" class="form-control" name="imageurl" formControlName="imageurl" />
+                    <div *ngIf="cForm.controls['imageurl'].errors && (form.submitted || cForm.controls['imageurl'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['imageurl'].errors['required']">Please Enter image Url</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Sequence:</label>
+                    <input type="number" class="form-control" name="sequence" formControlName="sequence" />
+                    <div *ngIf="cForm.controls['sequence'].errors && (form.submitted || cForm.controls['sequence'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['sequence'].errors['required']">Please Enter image Url</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Unit Price:</label>
+                    <input type="number" class="form-control" name="unitPrice" formControlName="unitPrice" />
+                    <div *ngIf="cForm.controls['unitPrice'].errors && (form.submitted || cForm.controls['unitPrice'].touched)"
+                        class="text-danger">
+                        <span [hidden]="!cForm.controls['unitPrice'].errors['required']">Please Enter Unit Price</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label">Is Course Active? :</label>
+            <input type="checkbox" name="difficultyType" formControlName="isActive" class="m-1" />
+            <div *ngIf="cForm.controls['isActive'].errors && (form.submitted || cForm.controls['isActive'].dirty)"
+                class="text-danger">
+                <span [hidden]="!cForm.controls['isActive'].errors['required']">Please Select here</span>
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <input type="submit" value="Save" class="btn btn-success" />
+            &nbsp;<a [routerLink]="['/']" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+
+
+</div>
